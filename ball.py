@@ -26,5 +26,8 @@ class Ball(Turtle):
         self.bounce_y()
 
     def increase_difficulty(self):
-        self.x_move += 0.5
-        self.y_move -= 0.5
+        # IF POSITIVE NUM ADD POSITIVE
+        if self.y_move > 0:
+            self.y_move += 0.5
+        elif self.y_move < 0:
+            self.y_move -= 0.5

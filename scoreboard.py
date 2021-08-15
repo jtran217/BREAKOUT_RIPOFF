@@ -14,7 +14,7 @@ class ScoreBoard(Turtle):
     def update_score(self):
         self.clear()
         self.goto(0,300)
-        self.write(f'Score: {self.score}',align='center', font=("Courier", 80, "normal"))
+        self.write(f'Score: {self.score}',align='center', font=("Courier", 60, "normal"))
 
     def score_point(self):
         self.score += 1
@@ -23,8 +23,4 @@ class ScoreBoard(Turtle):
     def lose_update(self):
         self.clear()
         self.goto(0,300)
-        self.write("YOU LOSE",align='center', font=("Courier", 80, "normal"))
-    def win_update(self):
-        self.clear()
-        self.goto(0,300)
-        self.write("YOU WIN",align='center', font=("Courier", 80, "normal"))
+        self.write(f"GAME OVER,SCORE: {self.score}",align='center', font=("Courier", 40, "normal"))

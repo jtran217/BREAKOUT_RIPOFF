@@ -7,6 +7,7 @@ from scoreboard import ScoreBoard
 import time
 
 
+
 # GAME LOGIC #
 screen = Screen()
 screen.title("BREAKOUT")
@@ -41,6 +42,7 @@ while game_mode:
     # IF BALL HITS PADDLE IT SHOULD BOUNCE
     if ball.distance(player) < 30 and ball.ycor() > -250:
         ball.bounce_y()
+
     # IF BALL HITS ONE OF THE WALLS IT SHOULD TURN INVISIBLE AND SCORE PLAYER WITH POINT
     if ball.ycor() > 5:
         for object in wallmanager.all_wall:
@@ -50,16 +52,17 @@ while game_mode:
                 ball.bounce_y()
             else:
                 pass
+    # IF BALL HITS TOP
+    if ball.ycor() > 398:
+        ball.bounce_y()
     # LOSE CONDITION
     if ball.ycor() < -400:
         scoreboard.lose_update()
         game_mode = False
-    # WIN CONDITION
-    if ball.ycor() > 400:
-        scoreboard.win_update()
-        game_mode = False
+
     # INCREASE SPEED OF BALL BASED ON CURRENT SCORE
-    if scoreboard.score > 12:
-        ball.increase_difficulty()
+    if scoreboard.score > 1:
+        if scoreboard.score / 4 == 0:
+            ball.increase_difficulty()
 
 screen.exitonclick()
